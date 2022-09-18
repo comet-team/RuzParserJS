@@ -4,6 +4,6 @@ services:
   bot:
     container_name: hse-hack-bot
     restart: unless-stopped
-    image: advasileva/hse-hack-bot
+    image: advasileva/scrapper
     ports:
       - 3000:3000
