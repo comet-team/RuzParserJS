@@ -1,0 +1,9 @@
+version: "3.4"
+
+services:
+  bot:
+    container_name: hse-hack-bot
+    restart: unless-stopped
+    image: advasileva/hse-hack-bot
+    ports:
+      - 3000:3000
