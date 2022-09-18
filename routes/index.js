@@ -42,9 +42,21 @@ async function sendData(schedule, chat_id) {
     return await (send);
 }
 
+function parseSchedule(schedule_raw) {
+    let schedule = "";
+    schedule += 'Пять ближайших пар:\n';
+    for (let i = 0; i < 5; ++i) {
+        schedule += 'Пара в ' + schedule_raw[i].beginLesson + ':\n';
+        schedule += '  ' + schedule_raw[i].discipline + ' ';
+        schedule += 'в ' + schedule_raw[i].auditorium + '.\n';
+    }
+    return schedule;
+}
+
 async function helper(group_name, chat_id) {
     let group_id = await getGroupId(group_name);
-    let schedule = await getWeekSchedule(group_id);
+    let schedule_raw = await getWeekSchedule(group_id);
+    let schedule = parseSchedule(schedule_raw);
     let send = await sendData(schedule, chat_id);
     console.log(send);
 }
